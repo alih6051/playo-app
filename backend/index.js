@@ -7,6 +7,8 @@ const corsOptions = require("./config/corsOptions");
 const cookieParser = require("cookie-parser");
 const rootRoutes = require("./routes/rootRoutes");
 const userRoutes = require("./routes/userRoutes");
+const eventRoutes = require("./routes/eventRoutes");
+const requestRoutes = require("./routes/requestRoutes");
 const connection = require("./config/db");
 const PORT = process.env.PORT || 4500;
 
@@ -19,7 +21,12 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 
 app.use("/", rootRoutes);
+
 app.use("/users", userRoutes);
+
+app.use("/events", eventRoutes);
+
+app.use("/requests", requestRoutes);
 
 app.all("*", (req, res) => {
   res.status(404);

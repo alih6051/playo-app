@@ -1,4 +1,4 @@
-const userModel = require("../models/userModel");
+const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -6,24 +6,26 @@ const jwt = require("jsonwebtoken");
 // @route POST /users/register
 // @access Public
 const registerUser = async (req, res) => {
-  const { username, password } = req.body;
+  const { name, username, password } = req.body;
   try {
     // Confirm data
-    if (!username || !password)
+    if (!username || !password || !name)
       return res.status(400).send({ msg: "All fields are required." });
 
     // Check for duplicate username
-    const duplicate = await userModel.findOne({ username });
+    const duplicate = await User.findOne({ username });
 
     if (duplicate) {
-      return res.status(409).json({ message: "Duplicate username" });
+      return res
+        .status(409)
+        .json({ msg: "Username already exits, please login." });
     }
 
     // Hash password
     const hashedPwd = await bcrypt.hash(password, 3); // salt rounds
 
     // Create and store new user
-    const user = await userModel.create({ username, password: hashedPwd });
+    const user = await User.create({ name, username, password: hashedPwd });
 
     if (user) {
       //created
@@ -32,6 +34,7 @@ const registerUser = async (req, res) => {
       res.status(400).send({ msg: "Invalid user data received" });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).send({ msg: "Internal server error", error });
   }
 };
@@ -47,7 +50,7 @@ const loginUser = async (req, res) => {
       return res.status(400).send({ msg: "All fields are required." });
 
     // Getting user
-    const user = await userModel.findOne({ username });
+    const user = await User.findOne({ username });
     if (!user) return res.status(400).send({ msg: "User not found." });
 
     // Comparing password
@@ -55,11 +58,17 @@ const loginUser = async (req, res) => {
 
     if (result) {
       const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-      res.send({ msg: `Login successful.`, token });
+      res.send({
+        userId: user._id,
+        name: user.name,
+        username: username,
+        token,
+      });
     } else {
       res.status(400).send({ msg: "Wrong credentials." });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).send({ msg: "Internal server error", error });
   }
 };
