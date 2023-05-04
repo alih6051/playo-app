@@ -1,4 +1,4 @@
-<h1 align="center">iBlog</h1>
+<h1 align="center">Playo App</h1>
 
 <h3 align="center">
 This is a clone of the Playo App using the MERN stack (MongoDB, Express, React, Node.js) that help sports enthusiast to connect and attend event.</h3>
