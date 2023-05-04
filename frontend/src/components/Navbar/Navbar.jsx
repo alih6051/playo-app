@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <Box bg="white" py={2}>
+      <Box bg="white" py={2} position="sticky" top="0" zIndex="100">
         <Container maxW="8xl">
           <Flex justifyContent="space-between" alignItems="center">
             <Box>
