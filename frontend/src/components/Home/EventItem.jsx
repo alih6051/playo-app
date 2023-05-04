@@ -22,7 +22,7 @@ const EventItem = ({ _id, cover, title, venue, date, limit, partcipants }) => {
             <Text fontSize="sm" noOfLines={2} marginBottom={3}>
               {venue}
             </Text>
-            {isAfter(new Date(date), Date.now()) ||
+            {isAfter(new Date(date), Date.now()) &&
             partcipants.length < limit ? (
               <Tag size="lg" variant="solid" colorScheme="green">
                 Bookable
