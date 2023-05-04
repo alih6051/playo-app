@@ -36,7 +36,7 @@ This is a clone of the Playo App using the MERN stack (MongoDB, Express, React, 
 <h3 align="center"><a href="https://playo-app.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
 
 
-![cover](https://i.ibb.co/TYR5SX9/home.png)
+![cover](https://res.cloudinary.com/dkudiktme/image/upload/v1683209317/Playo%20App/home_xbrepf.png)
 
 <br />
 
@@ -83,20 +83,15 @@ If you find any bugs or would like to contribute to this project, please feel fr
 
 <table>
   <tr>
-    <td><img src="https://i.ibb.co/TYR5SX9/home.png" alt="home" /></td>
-    <td><img src="https://i.ibb.co/hgSB4dT/single.png" alt="product" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209317/Playo%20App/home_xbrepf.png" alt="home" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209318/Playo%20App/single_rfehc4.png" alt="product" /></td>
   </tr>
   <tr>
-    <td><img src="https://i.ibb.co/nzmst5n/create.png" alt="signup" /></td>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1681067618/iblog/side_1_j0ky69.png" alt="login" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209315/Playo%20App/create_xdl3om.png" alt="signup" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209548/Playo%20App/req_cceite.png" alt="login" /></td>
   </tr>
   <tr>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1681067777/iblog/post_1_u5pv8m.png" alt="cart" /></td>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1681067882/iblog/profile_1_wsohal.png" alt="stripe" /></td>
-  </tr>
-  <tr>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1681068005/iblog/list_1_eudjc7.png" alt="cart" /></td>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1681499865/iblog/comment_gn8dij.png" alt="cart" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209548/Playo%20App/reqre_oljvzh.png" alt="cart" /></td>
   </tr>
 </table>
 
@@ -109,7 +104,28 @@ If you find any bugs or would like to contribute to this project, please feel fr
 
 <br />
 
+# REST API
 
+This repository contains a REST API built using NodeJS, ExpressJS and MongoDB. It follows the REST architecture principles and is designed to be scalable and maintainable.
+
+## Getting Started
+
+Deployed Link :- https://tough-ant-vestments.cyclic.app
+
+## API Endpoints
+
+The following API endpoints are available:
+
+| Endpoint | Method | Description |
+| -------- | ------ | ----------- |
+| /users/login | POST | Login a user |
+| /users/register | POST | Create a new user |
+| /events | GET | Get all events |
+| /events/:id | GET | Get a single Event |
+| /events/send/:eventId | POST | Send a join request |
+| /events/accept/:requestId | POST | Accept a join request |
+| /events/recieved | GET | Get all recieved requests |
+| /events/sent | GET | Get all sent requests |
 
 ## Contact
 
