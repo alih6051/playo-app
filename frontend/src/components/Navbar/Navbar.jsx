@@ -1,16 +1,20 @@
 import {
   Box,
   Button,
+  Collapse,
   Container,
   Flex,
   HStack,
   Image,
+  Stack,
   StackDivider,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import { logoutUser } from "../../redux/authSlice";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
@@ -22,6 +26,8 @@ const Navbar = () => {
     dispatch(logoutUser());
     window.location.reload();
   };
+
+  const { isOpen, onToggle } = useDisclosure();
 
   return (
     <>
@@ -37,21 +43,29 @@ const Navbar = () => {
                 />
               </RouterLink>
             </Box>
-            <HStack spacing={6}>
+            <HStack spacing={6} display={{ base: "none", md: "flex" }}>
               <RouterLink to="/">
-                <Button variant="unstyled">Home</Button>
+                <Button variant="link" color="black">
+                  Home
+                </Button>
               </RouterLink>
 
               <RouterLink to="/create-event">
-                <Button variant="unstyled">Create Event</Button>
+                <Button variant="link" color="black">
+                  Create Event
+                </Button>
               </RouterLink>
 
               <RouterLink to="/requested-events">
-                <Button variant="unstyled">Requsted Events</Button>
+                <Button variant="link" color="black">
+                  Requsted Events
+                </Button>
               </RouterLink>
 
               <RouterLink to="/requests">
-                <Button variant="unstyled">Requests</Button>
+                <Button variant="link" color="black">
+                  Requests
+                </Button>
               </RouterLink>
 
               {user ? (
@@ -63,12 +77,70 @@ const Navbar = () => {
                 </HStack>
               ) : (
                 <RouterLink to="/account">
-                  <Button variant="unstyled">Login / SignUp</Button>
+                  <Button variant="link" color="black">
+                    Sign In
+                  </Button>
                 </RouterLink>
               )}
             </HStack>
+
+            <Button
+              variant="unstyled"
+              display={{ base: "flex", md: "none" }}
+              onClick={onToggle}
+            >
+              {isOpen ? (
+                <CloseIcon fontSize="17px" />
+              ) : (
+                <HamburgerIcon fontSize="24px" />
+              )}
+            </Button>
           </Flex>
         </Container>
+        <Collapse in={isOpen} animateOpacity>
+          <Container maxW="8xl" mt="3">
+            <Stack spacing={5}>
+              <RouterLink to="/">
+                <Button variant="link" color="black" onClick={onToggle}>
+                  Home
+                </Button>
+              </RouterLink>
+
+              <RouterLink to="/create-event">
+                <Button variant="link" color="black" onClick={onToggle}>
+                  Create Event
+                </Button>
+              </RouterLink>
+
+              <RouterLink to="/requested-events">
+                <Button variant="link" color="black" onClick={onToggle}>
+                  Requsted Events
+                </Button>
+              </RouterLink>
+
+              <RouterLink to="/requests">
+                <Button variant="link" color="black" onClick={onToggle}>
+                  Requests
+                </Button>
+              </RouterLink>
+
+              {user ? (
+                <HStack divider={<StackDivider borderColor="gray.200" />}>
+                  <Text>{user.name}</Text>
+                  <Button size="sm" colorScheme="green" onClick={handleLogout}>
+                    Logout
+                  </Button>
+                </HStack>
+              ) : (
+                <RouterLink to="/account">
+                  <Button variant="link" color="black" onClick={onToggle}>
+                    Sign In
+                  </Button>
+                </RouterLink>
+              )}
+            </Stack>
+          </Container>
+        </Collapse>
       </Box>
       <hr />
     </>

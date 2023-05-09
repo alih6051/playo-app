@@ -5,9 +5,11 @@ import {
   Card,
   CardBody,
   Container,
+  HStack,
   Heading,
   Stack,
   Tag,
+  TagLabel,
   Text,
   useToast,
 } from "@chakra-ui/react";
@@ -91,8 +93,30 @@ const Request = () => {
                 <Stack spacing={2}>
                   <Heading fontSize="lg">{item.event.title}</Heading>
                   <Text>{item.event.venue}</Text>
-                  <Text>Sent by - ( {item.sender.name} )</Text>
-                  <Text>Status - ( {item.status} ) </Text>
+                  <HStack>
+                    <Text>Sent by - </Text>
+                    <Tag size="lg" colorScheme="green" borderRadius="full">
+                      <Avatar
+                        size="xs"
+                        name={item.sender.name}
+                        ml={-1}
+                        mr={2}
+                      />
+                      <TagLabel>{item.sender.name}</TagLabel>
+                    </Tag>
+                  </HStack>
+                  <HStack>
+                    <Text>Status - </Text>
+                    {item.status == "pending" ? (
+                      <Tag size="lg" variant="subtle" colorScheme="yellow">
+                        pending
+                      </Tag>
+                    ) : (
+                      <Tag size="lg" variant="subtle" colorScheme="green">
+                        accepted
+                      </Tag>
+                    )}
+                  </HStack>
                 </Stack>
                 <Box marginTop={5}>
                   {isAfter(new Date(item.event.date), Date.now()) ||
@@ -108,9 +132,9 @@ const Request = () => {
                       Accept
                     </Button>
                   ) : (
-                    <Tag variant="solid" colorScheme="red">
+                    <Button isDisabled={true} colorScheme="red" size="sm">
                       Expired
-                    </Tag>
+                    </Button>
                   )}
                 </Box>
               </CardBody>

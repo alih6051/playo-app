@@ -29,9 +29,13 @@ const RequstedItem = ({ event, status }) => {
 
             <Text py="2">{event.venue}</Text>
             {status == "pending" ? (
-              <Tag colorScheme="yellow">Pending</Tag>
+              <Tag colorScheme="yellow" size="lg">
+                Pending
+              </Tag>
             ) : (
-              <Tag colorScheme="green">Accepted</Tag>
+              <Tag colorScheme="green" size="lg">
+                Accepted
+              </Tag>
             )}
           </CardBody>
         </Stack>

@@ -6,7 +6,7 @@ const EventList = ({ data, loading }) => {
   if (loading) return <Loader />;
 
   return (
-    <SimpleGrid columns={3} spacing={10}>
+    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
       {data?.map((item) => (
         <EventItem key={item._id} {...item} />
       ))}

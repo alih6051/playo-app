@@ -160,7 +160,7 @@ const CreateEvent = () => {
               <option value="Mumbai">Mumbai</option>
             </Select>
 
-            <Flex justifyContent="space-between" w="100%">
+            <Flex justifyContent="space-between" w="100%" flexWrap="wrap">
               <Box>
                 <Text>Date</Text>
                 <Input
