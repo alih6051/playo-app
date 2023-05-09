@@ -1,8 +1,10 @@
 import {
+  Avatar,
   Box,
   Button,
   Card,
   CardBody,
+  Center,
   Container,
   Flex,
   Grid,
@@ -11,8 +13,12 @@ import {
   Heading,
   Image,
   Stack,
+  Tag,
+  TagLabel,
   Text,
   VStack,
+  Wrap,
+  WrapItem,
   useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -92,6 +98,8 @@ const Event = () => {
       });
   }, []);
 
+  console.log(status);
+
   if (loading || !data)
     return (
       <Box marginTop={10}>
@@ -101,36 +109,13 @@ const Event = () => {
 
   return (
     <Container maxW="8xl" marginTop={10}>
-      <VStack align="left" spacing={5}>
-        <Flex justifyContent="space-between" alignItems="center">
-          <Heading>{data?.title}</Heading>
-          <HStack spacing={5}>
-            <Button
-              colorScheme="green"
-              px={20}
-              size="lg"
-              isLoading={booking}
-              loadingText="Booking"
-              isDisabled={status}
-              onClick={handleBooking}
-            >
-              Book Now
-            </Button>
-            {status && (
-              <Text
-                px={20}
-                py={3}
-                rounded={5}
-                bg="blackAlpha.100"
-                fontSize="lg"
-              >
-                {status}
-              </Text>
-            )}
-          </HStack>
-        </Flex>
-        <Grid templateColumns="repeat(5, 1fr)" gap={10}>
-          <GridItem colSpan={3}>
+      <VStack align="left" spacing={5} marginBottom={7}>
+        <Heading fontSize={{ base: "2xl", md: "3xl" }}>{data?.title}</Heading>
+        <Grid
+          templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 1fr)" }}
+          gap={10}
+        >
+          <GridItem colSpan={{ base: 2, md: 3 }}>
             <Image
               src={data?.cover}
               maxH="500px"
@@ -138,7 +123,7 @@ const Event = () => {
               objectFit="cover"
             />
           </GridItem>
-          <GridItem colSpan={2}>
+          <GridItem colSpan={{ base: 2, md: 2 }}>
             <Stack spacing={5}>
               <Card>
                 <CardBody>
@@ -164,12 +149,41 @@ const Event = () => {
                     <Heading fontSize="lg" marginBottom={3}>
                       Partcipants
                     </Heading>
-                    <Text>
-                      {data?.partcipants.map((el) => el.name).join(", ")}
-                    </Text>
+                    <Wrap>
+                      {data?.partcipants.map((el) => (
+                        <WrapItem key={el._id}>
+                          <Tag
+                            size="lg"
+                            colorScheme="green"
+                            borderRadius="full"
+                          >
+                            <Avatar size="xs" name={el.name} ml={-1} mr={2} />
+                            <TagLabel>{el.name}</TagLabel>
+                          </Tag>
+                        </WrapItem>
+                      ))}
+                    </Wrap>
                   </CardBody>
                 </Card>
               )}
+              <HStack spacing={5}>
+                <Button
+                  colorScheme="green"
+                  size="lg"
+                  isLoading={booking}
+                  loadingText="Booking"
+                  isDisabled={status}
+                  onClick={handleBooking}
+                >
+                  Book Now
+                </Button>
+
+                {status && (
+                  <Button size="lg" isDisabled={true}>
+                    {status}
+                  </Button>
+                )}
+              </HStack>
             </Stack>
           </GridItem>
         </Grid>
