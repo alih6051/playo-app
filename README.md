@@ -36,7 +36,7 @@ This is a clone of the Playo App using the MERN stack (MongoDB, Express, React, 
 <h3 align="center"><a href="https://playo-app.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
 
 
-![cover](https://res.cloudinary.com/dkudiktme/image/upload/v1683209317/Playo%20App/home_xbrepf.png)
+![cover](https://res.cloudinary.com/dkudiktme/image/upload/v1683663297/Playo%20App/home_ofzpdw.png)
 
 <br />
 
@@ -83,15 +83,15 @@ If you find any bugs or would like to contribute to this project, please feel fr
 
 <table>
   <tr>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209317/Playo%20App/home_xbrepf.png" alt="home" /></td>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209318/Playo%20App/single_rfehc4.png" alt="product" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683663297/Playo%20App/home_ofzpdw.png" alt="home" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683663295/Playo%20App/single_eiqqzs.png" alt="product" /></td>
   </tr>
   <tr>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209315/Playo%20App/create_xdl3om.png" alt="signup" /></td>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209548/Playo%20App/req_cceite.png" alt="login" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683663296/Playo%20App/create_dggztb.png" alt="signup" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683663295/Playo%20App/reqE_ht2vxi.png" alt="login" /></td>
   </tr>
   <tr>
-    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683209548/Playo%20App/reqre_oljvzh.png" alt="cart" /></td>
+    <td><img src="https://res.cloudinary.com/dkudiktme/image/upload/v1683663266/Playo%20App/req_udvmho.png" alt="cart" /></td>
   </tr>
 </table>
 
