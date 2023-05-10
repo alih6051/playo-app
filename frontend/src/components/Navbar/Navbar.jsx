@@ -27,7 +27,7 @@ const Navbar = () => {
     window.location.reload();
   };
 
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onClose, onToggle } = useDisclosure();
 
   return (
     <>
@@ -100,26 +100,26 @@ const Navbar = () => {
         <Collapse in={isOpen} animateOpacity>
           <Container maxW="8xl" mt="3">
             <Stack spacing={5}>
-              <RouterLink to="/">
-                <Button variant="link" color="black" onClick={onToggle}>
+              <RouterLink to="/" onClick={onClose}>
+                <Button variant="link" color="black">
                   Home
                 </Button>
               </RouterLink>
 
-              <RouterLink to="/create-event">
-                <Button variant="link" color="black" onClick={onToggle}>
+              <RouterLink to="/create-event" onClick={onClose}>
+                <Button variant="link" color="black">
                   Create Event
                 </Button>
               </RouterLink>
 
-              <RouterLink to="/requested-events">
-                <Button variant="link" color="black" onClick={onToggle}>
+              <RouterLink to="/requested-events" onClick={onClose}>
+                <Button variant="link" color="black">
                   Requsted Events
                 </Button>
               </RouterLink>
 
-              <RouterLink to="/requests">
-                <Button variant="link" color="black" onClick={onToggle}>
+              <RouterLink to="/requests" onClick={onClose}>
+                <Button variant="link" color="black">
                   Requests
                 </Button>
               </RouterLink>
@@ -132,8 +132,8 @@ const Navbar = () => {
                   </Button>
                 </HStack>
               ) : (
-                <RouterLink to="/account">
-                  <Button variant="link" color="black" onClick={onToggle}>
+                <RouterLink to="/account" onClick={onClose}>
+                  <Button variant="link" color="black">
                     Sign In
                   </Button>
                 </RouterLink>
